@@ -1,7 +1,7 @@
 class AppSettings {
   final bool isDarkMode;
 
-  AppSettings({
+  const AppSettings({
     this.isDarkMode = false,
   });
 

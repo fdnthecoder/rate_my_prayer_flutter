@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:rate_my_prayer_flutter/core/utils/constants.dart';
 import 'package:rate_my_prayer_flutter/core/utils/date_utils.dart';
+import 'package:rate_my_prayer_flutter/domain/entities/salah_log.dart';
 import 'package:rate_my_prayer_flutter/providers/clock_providers.dart';
 import 'package:rate_my_prayer_flutter/providers/salah_provider.dart';
 import 'package:rate_my_prayer_flutter/ui/widgets/motivational_card.dart';

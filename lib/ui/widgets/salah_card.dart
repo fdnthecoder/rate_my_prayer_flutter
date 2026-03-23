@@ -27,7 +27,7 @@ class SalahCard extends StatelessWidget {
           children: [
             Expanded(
               child: Column(
-                crossAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     salahName,

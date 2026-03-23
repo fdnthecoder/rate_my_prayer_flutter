@@ -27,7 +27,7 @@ class StatsScreen extends ConsumerWidget {
     }
 
     return Scaffold(
-      app_bar: AppBar(title: const Text('Statistics')),
+      appBar: AppBar(title: const Text('Statistics')),
       body: ListView(
         padding: const EdgeInsets.all(16.0),
         children: [

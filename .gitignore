@@ -1,0 +1,50 @@
+# Flutter/Dart/Pub
+.dart_tool/
+/.packages
+.packages
+.flutter-plugins
+.flutter-plugins-dependencies
+.pub-cache/
+.pub/
+
+# Build outputs
+/build/
+**/build/
+**/intermediates/
+**/outputs/
+**/tmp/
+
+# Generated files
+/ios/Flutter/Generated.xcconfig
+/ios/Flutter/Flutter.framework
+/ios/Flutter/Flutter.podspec
+
+# Android
+/.gradle/
+android/.gradle/
+/.idea/
+*.iml
+
+# Xcode
+*.xcworkspace
+xcuserdata/
+*.xcuserstate
+
+# macOS
+.DS_Store
+
+# IntelliJ / VS Code
+.idea/
+.vscode/
+
+# Native build artifacts and caches
+**/derivedData/
+**/Pods/
+**/podfile.lock
+
+# Misc
+*.log
+*.tmp
+
+# Ignore local secrets
+local.properties

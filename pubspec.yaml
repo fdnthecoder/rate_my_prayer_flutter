@@ -28,13 +28,20 @@ dependencies:
   table_calendar: ^3.0.9
   google_fonts: ^6.1.0
 
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  
   # Drift Generators
   drift_dev: ^2.14.1
   build_runner: ^2.4.7
+  flutter_launcher_icons: ^0.13.1
 
 flutter:
   uses-material-design: true
+
+flutter_icons:
+  android: true
+  ios: false
+  image_path: "lib/icons/salat.png"
+

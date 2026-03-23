@@ -22,7 +22,7 @@ class SalahState {
     this.monthSalahs = const [],
     this.allSalahs = const [],
     this.practiceLogs = const [],
-    this.settings = AppSettings(),
+    this.settings = const AppSettings(),
   });
 
   SalahState copyWith({

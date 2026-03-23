@@ -1,26 +1,26 @@
 import 'package:drift/drift.dart';
-import 'package:rate_my_prayer_flutter/data/database/app_database.dart';
+import 'package:rate_my_prayer_flutter/data/database/app_database.dart' as db;
 import 'package:rate_my_prayer_flutter/domain/entities/app_settings.dart';
-import 'package:rate_my_prayer_flutter/domain/entities/practice_log.dart';
 import 'package:rate_my_prayer_flutter/domain/entities/salah_log.dart';
+import 'package:rate_my_prayer_flutter/domain/entities/practice_log.dart';
 import 'package:rate_my_prayer_flutter/domain/repositories/salah_repository.dart';
 
 class SalahRepositoryImpl implements ISalahRepository {
-  final AppDatabase _db;
+  final db.AppDatabase _db;
 
   SalahRepositoryImpl(this._db);
 
   @override
   Future<void> insertSalahLog(SalahLog salahLog) async {
     await _db.into(_db.salahLogs).insertOnConflictUpdate(
-          SalahLogsCompanion.insert(
-            date: salahLog.date,
-            salahName: salahLog.salahName,
-            rating: salahLog.rating,
-            loggedAt: salahLog.loggedAt,
-            notes: Value(salahLog.notes),
-          ),
-        );
+      db.SalahLogsCompanion.insert(
+        date: salahLog.date,
+        salahName: salahLog.salahName,
+        rating: salahLog.rating,
+        loggedAt: salahLog.loggedAt,
+        notes: Value(salahLog.notes),
+      ),
+    );
   }
 
   @override
@@ -28,7 +28,6 @@ class SalahRepositoryImpl implements ISalahRepository {
     final query = _db.select(_db.salahLogs)
       ..where((t) => t.date.equals(date))
       ..where((t) => t.salahName.equals(salahName));
-
     final result = await query.getSingleOrNull();
     return result != null ? _mapToSalahLog(result) : null;
   }
@@ -63,14 +62,14 @@ class SalahRepositoryImpl implements ISalahRepository {
   @override
   Future<void> insertPracticeLog(PracticeLog practiceLog) async {
     await _db.into(_db.practiceLogs).insert(
-          PracticeLogsCompanion.insert(
-            date: practiceLog.date,
-            rakat: practiceLog.rakat,
-            rating: practiceLog.rating,
-            loggedAt: practiceLog.loggedAt,
-            notes: Value(practiceLog.notes),
-          ),
-        );
+      db.PracticeLogsCompanion.insert(
+        date: practiceLog.date,
+        rakat: practiceLog.rakat,
+        rating: practiceLog.rating,
+        loggedAt: practiceLog.loggedAt,
+        notes: Value(practiceLog.notes),
+      ),
+    );
   }
 
   @override
@@ -107,7 +106,7 @@ class SalahRepositoryImpl implements ISalahRepository {
   @override
   Future<void> updateSettings(AppSettings settings) async {
     await _db.into(_db.appSettingsTable).insertOnConflictUpdate(
-          AppSettingsTableCompanion.insert(
+          db.AppSettingsTableCompanion.insert(
             id: const Value(1),
             isDarkMode: Value(settings.isDarkMode),
           ),
@@ -115,7 +114,7 @@ class SalahRepositoryImpl implements ISalahRepository {
   }
 
   // Helper mappers
-  SalahLog _mapToSalahLog(SalahLogData row) {
+  SalahLog _mapToSalahLog(db.SalahLog row) {
     return SalahLog(
       id: row.id,
       date: row.date,
@@ -126,7 +125,7 @@ class SalahRepositoryImpl implements ISalahRepository {
     );
   }
 
-  PracticeLog _mapToPracticeLog(PracticeLogData row) {
+  PracticeLog _mapToPracticeLog(db.PracticeLog row) {
     return PracticeLog(
       id: row.id,
       date: row.date,

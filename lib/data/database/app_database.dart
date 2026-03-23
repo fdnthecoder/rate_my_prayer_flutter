@@ -39,7 +39,7 @@ class AppSettingsTable extends Table {
 }
 
 @DriftDatabase(tables: [SalahLogs, PracticeLogs, AppSettingsTable])
-class AppDatabase extends _${AppDatabase} {
+class AppDatabase extends _$AppDatabase {
   AppDatabase() : super(_openConnection());
 
   AppDatabase.forTesting(DatabaseConnection connection) : super(connection);
